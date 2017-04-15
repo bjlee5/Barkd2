@@ -89,7 +89,7 @@ class ProfileVC: UIViewController {
                             
                             }
                             
-                        } else {
+                        } else { 
                                 
                         print(error?.localizedDescription)
                     }

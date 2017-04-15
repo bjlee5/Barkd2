@@ -31,7 +31,7 @@ class Post {
     var likes: Int {
         return _likes
     }
-    
+     
     var postUser: String {
         return _postUser
     }

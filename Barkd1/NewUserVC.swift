@@ -14,7 +14,7 @@ class NewUserVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     var imagePicker: UIImagePickerController!
     var imageSelected = false
-    
+     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!

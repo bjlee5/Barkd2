@@ -26,7 +26,7 @@ class ForgotPasswordVC: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                    
-                }
+                } 
                 alertController.addAction(OKAction)
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInVC")
                 self.present(vc, animated: true, completion: nil)
@@ -44,4 +44,4 @@ class ForgotPasswordVC: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
 
-}
+} 

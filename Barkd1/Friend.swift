@@ -17,3 +17,4 @@ class Friend: NSObject {
     var imagePath: String!
     
 }
+ 

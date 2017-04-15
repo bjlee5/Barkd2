@@ -25,3 +25,4 @@ class CircleView: UIImageView {
     }
     
 }
+ 

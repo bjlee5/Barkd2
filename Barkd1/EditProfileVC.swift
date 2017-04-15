@@ -33,7 +33,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
-    }
+    } 
 
     
     func fetchCurrentUser() {

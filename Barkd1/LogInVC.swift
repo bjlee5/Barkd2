@@ -77,7 +77,7 @@ class LogInVC: UIViewController {
             let OKAction = UIAlertAction(title: "Try Again", style: .default) { (action:UIAlertAction) in
                 print("You've pressed OK button");
                 
-            }
+            } 
             
             alertController.addAction(OKAction)
             return }

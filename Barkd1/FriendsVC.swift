@@ -110,7 +110,7 @@ class FriendsVC: UITableViewController, UISearchResultsUpdating, UISearchBarDele
                         ref.child("users").child(uid).child("following/\(ke)").removeValue()
                         ref.child("users").child(self.users[indexPath.row].userID).child("followers/\(ke)").removeValue()
                         
-                        
+                         
                         self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .none
                     }
                 }
