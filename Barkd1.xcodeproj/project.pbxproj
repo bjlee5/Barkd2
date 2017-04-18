@@ -15,6 +15,8 @@
 		D065040C1EA11C9000BC04F7 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065040B1EA11C9000BC04F7 /* EditProfileVC.swift */; };
 		D095D0DF1E9F9E4E0088CA21 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D0DE1E9F9E4E0088CA21 /* FriendsVC.swift */; };
 		D0AD36B41EA28C7000AE1D23 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AD36B31EA28C7000AE1D23 /* ForgotPasswordVC.swift */; };
+		D0AD36B61EA2942E00AE1D23 /* MyPostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AD36B51EA2942E00AE1D23 /* MyPostsVC.swift */; };
+		D0AD36BC1EA2C5E600AE1D23 /* MyPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AD36BB1EA2C5E600AE1D23 /* MyPostCell.swift */; };
 		D0B3FE591E7C242200D5BF86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3FE581E7C242200D5BF86 /* AppDelegate.swift */; };
 		D0B3FE5B1E7C242200D5BF86 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3FE5A1E7C242200D5BF86 /* LogInVC.swift */; };
 		D0B3FE5E1E7C242200D5BF86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B3FE5C1E7C242200D5BF86 /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		D065040B1EA11C9000BC04F7 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		D095D0DE1E9F9E4E0088CA21 /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		D0AD36B31EA28C7000AE1D23 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		D0AD36B51EA2942E00AE1D23 /* MyPostsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPostsVC.swift; sourceTree = "<group>"; };
+		D0AD36BB1EA2C5E600AE1D23 /* MyPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPostCell.swift; sourceTree = "<group>"; };
 		D0B3FE551E7C242200D5BF86 /* Barkd1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Barkd1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B3FE581E7C242200D5BF86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B3FE5A1E7C242200D5BF86 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 				D065040B1EA11C9000BC04F7 /* EditProfileVC.swift */,
 				D095D0DE1E9F9E4E0088CA21 /* FriendsVC.swift */,
 				D0AD36B31EA28C7000AE1D23 /* ForgotPasswordVC.swift */,
+				D0AD36B51EA2942E00AE1D23 /* MyPostsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				D061A7061E7DD91F00C18581 /* PostCell.swift */,
+				D0AD36BB1EA2C5E600AE1D23 /* MyPostCell.swift */,
 				D0BEB0511E855B4100685D60 /* UserCell.swift */,
 				D0C413C21E8320B900A6AA24 /* SexyView.swift */,
 				D0C413C41E8320EF00A6AA24 /* CircleView.swift */,
@@ -319,6 +325,7 @@
 				D064B6101E932536008C212C /* CurrentUsersVC.swift in Sources */,
 				D0B3FE771E7C24CA00D5BF86 /* NewUserVC.swift in Sources */,
 				D061A7091E7DDA3F00C18581 /* Post.swift in Sources */,
+				D0AD36BC1EA2C5E600AE1D23 /* MyPostCell.swift in Sources */,
 				D065040C1EA11C9000BC04F7 /* EditProfileVC.swift in Sources */,
 				D0B3FE7B1E7C250800D5BF86 /* DataService.swift in Sources */,
 				D0C413C91E83217500A6AA24 /* SexyField.swift in Sources */,
@@ -330,6 +337,7 @@
 				D0B3FE611E7C242200D5BF86 /* Barkd1.xcdatamodeld in Sources */,
 				D0B3FE7F1E7C4AE600D5BF86 /* ProfileVC.swift in Sources */,
 				D0AD36B41EA28C7000AE1D23 /* ForgotPasswordVC.swift in Sources */,
+				D0AD36B61EA2942E00AE1D23 /* MyPostsVC.swift in Sources */,
 				D0C413C51E8320EF00A6AA24 /* CircleView.swift in Sources */,
 				D095D0DF1E9F9E4E0088CA21 /* FriendsVC.swift in Sources */,
 				D0B3FE811E7C53D600D5BF86 /* User.swift in Sources */,

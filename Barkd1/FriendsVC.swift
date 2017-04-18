@@ -30,6 +30,7 @@ class FriendsVC: UITableViewController, UISearchResultsUpdating, UISearchBarDele
         ref.child("users").queryOrderedByKey().observeSingleEvent(of: .value, with: { snapshot in
             
             let users = snapshot.value as! [String: AnyObject]
+            print("CUNTZ5: \(users)")
             self.users.removeAll()
             for (_, value) in users {
                 if let uid = value["uid"] as? String {
@@ -111,7 +112,8 @@ class FriendsVC: UITableViewController, UISearchResultsUpdating, UISearchBarDele
                         ref.child("users").child(self.users[indexPath.row].userID).child("followers/\(ke)").removeValue()
                         
                          
-                        self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .none
+                     self.friendsTableView.cellForRow(at: indexPath)?.accessoryType = .none
+                    
                     }
                 }
             }

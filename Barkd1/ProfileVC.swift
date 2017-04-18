@@ -107,5 +107,9 @@ class ProfileVC: UIViewController {
     @IBAction func editProfile(_ sender: Any) {
         performSegue(withIdentifier: "EditProfileVC", sender: self)
     }
+    @IBAction func myPostsBtn(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyPostsVC")
+        self.present(vc, animated: true, completion: nil)
+    }
 
 }

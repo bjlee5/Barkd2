@@ -197,7 +197,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             
         }
     }
-    
+
     
     // Configure Firebase Post //
     
