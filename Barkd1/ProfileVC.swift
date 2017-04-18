@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import SCLAlertView
 
 class ProfileVC: UIViewController {
     
@@ -73,15 +74,20 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func deleteAccount(_ sender: Any) {
-        let alertController = UIAlertController(title: "WARNING", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
-        let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: delete)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+       
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("Delete") {
+                self.delete()
+        }
+            alertView.addButton("Cancel") {
+                
+            }
+            alertView.showError("WARNING", subTitle: "Are you sure you want to delete your account?")
         
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
         
-            
     }
     
     func delete() {
@@ -110,19 +116,8 @@ class ProfileVC: UIViewController {
         })
         
     }
-    
 
-    
-//    let alertController = UIAlertController(title: "Oops!", message: "You have not entered a valid e-mail!", preferredStyle: .alert)
-//    self.present(alertController, animated: true, completion: nil)
-//    let OKAction = UIAlertAction(title: "Try Again", style: .default) { (action:UIAlertAction) in
-//        print("You've pressed OK button");
-//        
-//    }
-//    
-//    alertController.addAction(OKAction)
-    
-    
+        
     @IBAction func findFriends(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FriendsVC")
         self.present(vc, animated: true, completion: nil)

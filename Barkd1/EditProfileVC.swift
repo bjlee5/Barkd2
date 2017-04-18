@@ -91,13 +91,29 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     @IBAction func updateProfile(_ sender: Any) {
         
-        // TODO: THERE IS NO ERROR HANDLING HERE
+
         let user = FIRAuth.auth()?.currentUser
         
-        let username = usernameField.text
-        let password = passwordField.text
-        let email = emailField.text
-        let bio = bioField.text
+        guard let username = usernameField.text, username != "" else {
+            showWarningMessage("Error", subTitle: "You have not entered a valid username!")
+            return
+        }
+        
+        guard let password = passwordField.text, password != "" else {
+            showWarningMessage("Error", subTitle: "You have not entered a valid password!")
+            return
+        }
+        
+        guard let email = emailField.text, email != "" else {
+            showWarningMessage("Error", subTitle: "You have not entered a valid e-mail!")
+            return
+        }
+        
+        guard let bio = bioField.text, bio != "" else {
+            showWarningMessage("Error", subTitle: "You have not entered a valid bio!")
+            return
+        }
+    
         let pictureData = UIImageJPEGRepresentation(self.profilePic.image!, 0.70)
         
         let imgUid = NSUUID().uuidString
@@ -119,13 +135,13 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 changeRequest?.didChangeValue(forKey: "password")
                 changeRequest?.displayName = username
                 
-                user?.updateEmail(email!, completion: { (error) in
+                user?.updateEmail(email, completion: { (error) in
                     if let error = error {
                         print(error.localizedDescription)
                     }
                 })
                 
-                user?.updatePassword(password!, completion: { (error) in
+                user?.updatePassword(password, completion: { (error) in
                     if let error = error {
                         print(error.localizedDescription)
                     }
@@ -140,7 +156,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                     if error == nil {
                     
                     let user = FIRAuth.auth()?.currentUser
-                    let userInfo = ["email": user!.email!, "username": username as Any , "uid": user!.uid, "photoURL": photoString!, "bio": bio!] as [String : Any]
+                    let userInfo = ["email": user!.email!, "username": username as Any , "uid": user!.uid, "photoURL": photoString!, "bio": bio] as [String : Any]
                     
                     let userRef = DataService.ds.REF_USERS.child((user?.uid)!)
                     userRef.setValue(userInfo)

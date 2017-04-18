@@ -7,12 +7,25 @@
 //
 
 import Foundation
+import UIKit
 import SCLAlertView
 
 func showWarningMessage(_ message: String, subTitle: String = "") {
-    let alert = SCLAlertView()
-    alert.showError(message, subTitle: subTitle)
+    let appearance = SCLAlertView.SCLAppearance(
+        showCloseButton: false
+    )
+    let alertView = SCLAlertView(appearance: appearance)
+    alertView.showError(message, subTitle: subTitle)
 }
+
+func showComplete(_ message: String, subTitle: String = "") {
+    let appearance = SCLAlertView.SCLAppearance(
+        showCloseButton: false
+    )
+    let alertView = SCLAlertView(appearance: appearance)
+    alertView.showSuccess(message, subTitle: subTitle)
+}
+
 
 
 

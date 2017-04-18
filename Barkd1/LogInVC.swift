@@ -71,29 +71,15 @@ class LogInVC: UIViewController {
  
     @IBAction func loginPress(_ sender: Any) {
         guard loginField.text != "", passwordField.text != "" else {
-            
-            let alertController = UIAlertController(title: "Oops!", message: "You have not entered a valid e-mail!", preferredStyle: .alert)
-            self.present(alertController, animated: true, completion: nil)
-            let OKAction = UIAlertAction(title: "Try Again", style: .default) { (action:UIAlertAction) in
-                print("You've pressed OK button");
-                
-            } 
-            
-            alertController.addAction(OKAction)
-            return }
+            showWarningMessage("Error", subTitle: "Please ensure E-mail and Password fields are filled in!")
+            return
+        }
         
         FIRAuth.auth()?.signIn(withEmail: loginField.text!, password: passwordField.text!, completion: { (user, error) in
             if let error = error {
                 print("BRIAN: Password and E-mail address do not match our records!")
                 
-                let alertController = UIAlertController(title: "Oops!", message: "Your e-mail and/or password do not match our records!", preferredStyle: .alert)
-                self.present(alertController, animated: true, completion: nil)
-                let OKAction = UIAlertAction(title: "Try Again", style: .default) { (action:UIAlertAction) in
-                    print("You've pressed OK button");
-                    
-                }
-                
-                alertController.addAction(OKAction)
+                showWarningMessage("Error", subTitle: "The password or E-mail you have entered do not match our records!")
             }
             if let user = user {
                 let userData = ["email": self.loginField.text!, "password": self.passwordField.text!]

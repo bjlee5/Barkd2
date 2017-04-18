@@ -44,12 +44,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showCurrentUser()
+        self.posts.sort(by: self.sortDatesFor)
         followingFriends()
         loadUserInfo()
         fetchPosts()
 
-        
+        self.tableView.reloadData()
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -65,19 +65,17 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
     } // End ViewDidLoad
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        self.tableView.reloadData()
+        self.posts.sort(by: self.sortDatesFor)
+    }
+    
     
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    
-    func showCurrentUser() {
-        if FIRAuth.auth()?.currentUser != nil {
-            print("BRIAN: There is somebody signed in!!!")
-        } else {
-            print("Aint nobody signed in!!!")
-        }
-    }
-    
     
     func loadUserInfo(){
         userRef.observe(.value, with: { (snapshot) in
@@ -215,12 +213,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     @IBAction func postSubmit(_ sender: Any) {
         guard let caption = postCaption.text, caption != "" else {
-            print("BRIAN: Caption must be entered")
+            showWarningMessage("Error", subTitle: "You have not entered a caption!")
             return
         }
         
         guard let img = userPost.image, imageSelected == true else {
-            print("BRIAN: An image must be selected")
+            showWarningMessage("Error", subTitle: "You have not selected an image!")
             return
         }
         
@@ -307,6 +305,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         userPost.image = UIImage(named: "add-image")
         
         self.tableView.reloadData()
+        showComplete("Posted!")
         
     }
     

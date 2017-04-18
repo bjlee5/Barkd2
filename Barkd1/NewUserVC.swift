@@ -61,13 +61,33 @@ class NewUserVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     //TODO: THERE IS NO ERROR HANDLING HERE
     
     @IBAction func createUserPress(_ sender: Any) {
-        let username = usernameField.text
-        let password = passwordField.text
-        let email = emailField.text
-        let bio = bioField.text
+        
+        guard let username = usernameField.text, username != "" else {
+            showWarningMessage("Error", subTitle: "You have not entered a username!")
+            return
+        }
+        guard let password = passwordField.text, password != "" else {
+            showWarningMessage("Error", subTitle: "You have not entered a valid password!")
+            return
+        }
+        guard let email = emailField.text, email != "" else {
+            showWarningMessage("Error", subTitle: "You have not entered a valid e-mail!")
+            return
+        }
+        
+        guard let bio = bioField.text, bio != "" else {
+            showWarningMessage("Error", subTitle: "You have not entered a valid bio!")
+            return
+        }
+        
+        guard imageSelected == true else {
+            showWarningMessage("Error", subTitle: "You have not selected an image!")
+            return
+        }
+        
         let pictureData = UIImageJPEGRepresentation(self.profilePic.image!, 0.70)
         
-        FIRAuth.auth()?.createUser(withEmail: email!, password: password!, completion: { (user, error) in
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
                 
                 print("BRIAN: Could not create user")
@@ -75,7 +95,7 @@ class NewUserVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             } else {
                 
                 print("BRIAN: The user has been created.")
-                self.setUserInfo(user: user, email: email!, password: password!, username: username!, bio: bio!, proPic: pictureData as NSData!)
+                self.setUserInfo(user: user, email: email, password: password, username: username, bio: bio, proPic: pictureData as NSData!)
                 
                     }
                 })
