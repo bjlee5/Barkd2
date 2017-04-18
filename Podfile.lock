@@ -54,6 +54,8 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
+  - SCLAlertView (0.7.0)
+  - SCLAlertView-Objective-C (1.0.6)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
@@ -62,6 +64,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - SCLAlertView
+  - SCLAlertView-Objective-C
   - SwiftKeychainWrapper (from `https://github.com/jrendel/SwiftKeychainWrapper.git`, branch `master`)
 
 EXTERNAL SOURCES:
@@ -89,8 +93,10 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+  SCLAlertView-Objective-C: ca78280817e66e74366b78579350dee2ff277e23
   SwiftKeychainWrapper: e353c2d5ac22e72ff7c1dc3b1de1f0e7341ba030
 
-PODFILE CHECKSUM: 2acab13595ea04abc576ba3e6be289c4375b96a4
+PODFILE CHECKSUM: b15f4f1bef2ff7e96c22725e2f59b9e295de5057
 
 COCOAPODS: 1.1.1

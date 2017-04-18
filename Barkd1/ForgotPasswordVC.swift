@@ -22,7 +22,7 @@ class ForgotPasswordVC: UIViewController {
         
         FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
             if error == nil {
-                let alertController = UIAlertController(title: "Password Reset", message: "Your password has been reset! You will receive a new one via e-mail shortly!", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Password Reset", message: "You will receive an e-mail momentarily with instructions on your password reset.", preferredStyle: .alert)
                 self.present(alertController, animated: true, completion: nil)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                    
@@ -30,6 +30,7 @@ class ForgotPasswordVC: UIViewController {
                 alertController.addAction(OKAction)
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInVC")
                 self.present(vc, animated: true, completion: nil)
+
                 
             } else {
                 

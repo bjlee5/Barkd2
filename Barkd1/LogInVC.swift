@@ -72,7 +72,7 @@ class LogInVC: UIViewController {
     @IBAction func loginPress(_ sender: Any) {
         guard loginField.text != "", passwordField.text != "" else {
             
-            let alertController = UIAlertController(title: "Oops!", message: "You've left the e-mail field blank you fucking numbskull!", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Oops!", message: "You have not entered a valid e-mail!", preferredStyle: .alert)
             self.present(alertController, animated: true, completion: nil)
             let OKAction = UIAlertAction(title: "Try Again", style: .default) { (action:UIAlertAction) in
                 print("You've pressed OK button");
@@ -104,20 +104,20 @@ class LogInVC: UIViewController {
     }
     
     @IBAction func fbLoginPress(_ sender: Any) {
-        let facebookLogin = FBSDKLoginManager()
-        
-        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
-            if error != nil {
-                print("BRIAN: Unable to Authenticate")
-            } else if result?.isCancelled == true {
-                print("BRIAN: User canceled Facebook authentication")
-            } else {
-                print("BRIAN: Succesfully autheticated with Facebook")
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                self.firebaseAuth(credential)
-                
-            }
-        }
+//        let facebookLogin = FBSDKLoginManager()
+//        
+//        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+//            if error != nil {
+//                print("BRIAN: Unable to Authenticate")
+//            } else if result?.isCancelled == true {
+//                print("BRIAN: User canceled Facebook authentication")
+//            } else {
+//                print("BRIAN: Succesfully autheticated with Facebook")
+//                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+//                self.firebaseAuth(credential)
+//                
+//            }
+//        }
     }
     
     @IBAction func createPress(_ sender: Any) {

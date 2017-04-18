@@ -13,6 +13,7 @@
 		D064B6101E932536008C212C /* CurrentUsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064B60F1E932536008C212C /* CurrentUsersVC.swift */; };
 		D064B6121E94723D008C212C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064B6111E94723D008C212C /* Friend.swift */; };
 		D065040C1EA11C9000BC04F7 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065040B1EA11C9000BC04F7 /* EditProfileVC.swift */; };
+		D073F5041EA64BEC004D3058 /* ShowAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D073F5031EA64BEC004D3058 /* ShowAlerts.swift */; };
 		D095D0DF1E9F9E4E0088CA21 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095D0DE1E9F9E4E0088CA21 /* FriendsVC.swift */; };
 		D0AD36B41EA28C7000AE1D23 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AD36B31EA28C7000AE1D23 /* ForgotPasswordVC.swift */; };
 		D0AD36B61EA2942E00AE1D23 /* MyPostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AD36B51EA2942E00AE1D23 /* MyPostsVC.swift */; };
@@ -47,6 +48,7 @@
 		D064B60F1E932536008C212C /* CurrentUsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUsersVC.swift; sourceTree = "<group>"; };
 		D064B6111E94723D008C212C /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		D065040B1EA11C9000BC04F7 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		D073F5031EA64BEC004D3058 /* ShowAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAlerts.swift; sourceTree = "<group>"; };
 		D095D0DE1E9F9E4E0088CA21 /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		D0AD36B31EA28C7000AE1D23 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		D0AD36B51EA2942E00AE1D23 /* MyPostsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPostsVC.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B3FE781E7C24EA00D5BF86 /* Constants.swift */,
+				D073F5031EA64BEC004D3058 /* ShowAlerts.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D073F5041EA64BEC004D3058 /* ShowAlerts.swift in Sources */,
 				D0C413CB1E83220500A6AA24 /* RoundButton.swift in Sources */,
 				D064B6101E932536008C212C /* CurrentUsersVC.swift in Sources */,
 				D0B3FE771E7C24CA00D5BF86 /* NewUserVC.swift in Sources */,

@@ -73,31 +73,54 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func deleteAccount(_ sender: Any) {
+        let alertController = UIAlertController(title: "WARNING", message: "Are you sure you want to delete your account?", preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: delete)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+            
+    }
+    
+    func delete() {
         let userRef = DataService.ds.REF_BASE.child("users/\(FIRAuth.auth()!.currentUser!.uid)")
         userRef.observe(.value, with: { (snapshot) in
             
             
             FIRAuth.auth()?.currentUser?.delete(completion: { (error) in
-
+                
                 if error == nil {
-                            
-                            print("BRIAN: Account successfully deleted!")
-                            DispatchQueue.main.async {
-            
-                            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInVC")
-                            self.present(vc, animated: true, completion: nil)
-                            
-                            }
-                            
-                        } else { 
-                                
-                        print(error?.localizedDescription)
+                    
+                    print("BRIAN: Account successfully deleted!")
+                    DispatchQueue.main.async {
+                        
+                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LogInVC")
+                        self.present(vc, animated: true, completion: nil)
+                        
+                        
                     }
-                })
+                    
+                } else {
+                    
+                    print(error?.localizedDescription)
+                }
+            })
         })
-            
-    }
         
+    }
+    
+
+    
+//    let alertController = UIAlertController(title: "Oops!", message: "You have not entered a valid e-mail!", preferredStyle: .alert)
+//    self.present(alertController, animated: true, completion: nil)
+//    let OKAction = UIAlertAction(title: "Try Again", style: .default) { (action:UIAlertAction) in
+//        print("You've pressed OK button");
+//        
+//    }
+//    
+//    alertController.addAction(OKAction)
     
     
     @IBAction func findFriends(_ sender: Any) {
