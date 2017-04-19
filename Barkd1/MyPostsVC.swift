@@ -171,17 +171,28 @@ class MyPostsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let posted = self.posts[forRowAt.row].postKey
         
-        FIRDatabase.database().reference().child("posts").child(posted).removeValue { (error, ref) in
-         
-            if error != nil {
-                print("BRIAN: Error - unable to process delete post.")
+        let ref = FIRDatabase.database().reference()
+            let uid = FIRAuth.auth()!.currentUser!.uid
+            let storage = FIRStorage.storage().reference(forURL: "gs://barkd1-fdf0e.appspot.com")
+            
+            // Remove the post from the DB
+            ref.child("posts").child(posted).removeValue { error in
+                if error != nil {
+                    print("error \(error)")
+                }
             }
-            
-            self.posts.remove(at: forRowAt.row)
-            self.tableView.deleteRows(at: [forRowAt], with: .automatic)
-            print("BRIAN: The posts were deleted")
-            
-        }
+            // Remove the image from storage
+            let imageRef = storage.child("posts").child(uid).child("\(posted).jpg")
+            imageRef.delete { error in
+                if let error = error {
+                    // Uh-oh, an error occurred!
+                } else {
+                    // File deleted successfully
+                }
+            }
+        
+        self.posts.remove(at: forRowAt.row)
+        self.tableView.deleteRows(at: [forRowAt], with: .automatic)
         
     }
     

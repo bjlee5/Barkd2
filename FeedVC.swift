@@ -44,7 +44,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.posts.sort(by: self.sortDatesFor)
+        self.posts.sort(by: self.sortLikesFor)
         followingFriends()
         loadUserInfo()
         fetchPosts()
@@ -67,7 +67,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        self.posts.sort(by: self.sortDatesFor)
+        self.posts.sort(by: self.sortLikesFor)
     }
     
     
@@ -103,6 +103,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     /// Sort Feed of Posts by Current Date
     func sortDatesFor(this: Post, that: Post) -> Bool {
         return this.currentDate > that.currentDate
+    }
+    
+    /// Sort Feed of Posts by Amount of Likes
+    func sortLikesFor(this: Post, that: Post) -> Bool {
+        return this.likes > that.likes
     }
     
     // Show Current User Feed //
@@ -163,7 +168,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             }
             
             self.tableView.reloadData()
-            self.posts.sort(by: self.sortDatesFor)
+            self.posts.sort(by: self.sortLikesFor)
             }
         })
     
