@@ -10,21 +10,30 @@ import Foundation
 import UIKit
 import SCLAlertView
 
+
 func showWarningMessage(_ message: String, subTitle: String = "") {
-    let appearance = SCLAlertView.SCLAppearance(
-        showCloseButton: false
-    )
-    let alertView = SCLAlertView(appearance: appearance)
+    let alertView = SCLAlertView()
     alertView.showError(message, subTitle: subTitle)
 }
 
 func showComplete(_ message: String, subTitle: String = "") {
-    let appearance = SCLAlertView.SCLAppearance(
-        showCloseButton: false
-    )
-    let alertView = SCLAlertView(appearance: appearance)
+    let alertView = SCLAlertView()
     alertView.showSuccess(message, subTitle: subTitle)
 }
+
+func showNotice(_ message: String, subTitle: String = "") {
+
+    let appearance = SCLAlertView.SCLAppearance(
+        kTitleFont: UIFont(name: "HelveticaNeue", size: 14)!,
+        kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+        showCloseButton: false
+    )
+    
+    let alertView = SCLAlertView(appearance: appearance)
+    alertView.showNotice(message, subTitle: subTitle)
+    
+}
+
 
 
 

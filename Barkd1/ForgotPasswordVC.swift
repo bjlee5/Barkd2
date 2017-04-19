@@ -25,7 +25,7 @@ class ForgotPasswordVC: UIViewController {
                 showComplete("Password", subTitle: "You will receive an e-mail momentarily with instructions!")
                 
             } else {
-                
+                showWarningMessage("Oops!", subTitle: "Please enter a valid e-mail address")
                 print(error?.localizedDescription)
             }
         

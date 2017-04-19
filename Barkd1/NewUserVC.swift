@@ -19,7 +19,8 @@ class NewUserVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var bioField: UITextView!
+    @IBOutlet weak var bioField: SexyField!
+    
     @IBOutlet weak var selectImgBtn: UIButton!
     
     override func viewDidLoad() {

@@ -185,22 +185,6 @@ class MyPostsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func currentPosts() {
-        
-        let uid = FIRAuth.auth()?.currentUser?.uid
-        let postsRef = FIRDatabase.database().reference().child("posts").child("S8OhMKKgm0WmS7GupEK7F7cZ7tl2")
-        postsRef.observe(.value, with: { (snapshot) in
-            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                for snap in snapshot {
-                    print("CUNTZ: \(snap)")
-                    let delete = snap.key
-                    postsRef.child(delete).removeValue()
-                    print("BRIAN: The post has been DELETED")
-                }
-            }
-        })
-    }
-    
     @IBAction func backPress(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

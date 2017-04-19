@@ -49,7 +49,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         loadUserInfo()
         fetchPosts()
 
-        self.tableView.reloadData()
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -68,7 +67,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        self.tableView.reloadData()
         self.posts.sort(by: self.sortDatesFor)
     }
     

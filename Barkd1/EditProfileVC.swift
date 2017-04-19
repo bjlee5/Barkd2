@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SCLAlertView
 
 class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,7 +22,6 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var profilePic: CircleView!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var bioField: UITextField!
     @IBOutlet weak var changeProBtn: UIButton!
     
@@ -99,11 +99,6 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             return
         }
         
-        guard let password = passwordField.text, password != "" else {
-            showWarningMessage("Error", subTitle: "You have not entered a valid password!")
-            return
-        }
-        
         guard let email = emailField.text, email != "" else {
             showWarningMessage("Error", subTitle: "You have not entered a valid e-mail!")
             return
@@ -132,16 +127,9 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 
                 let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
                 changeRequest?.didChangeValue(forKey: "email")
-                changeRequest?.didChangeValue(forKey: "password")
                 changeRequest?.displayName = username
                 
                 user?.updateEmail(email, completion: { (error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                })
-                
-                user?.updatePassword(password, completion: { (error) in
                     if let error = error {
                         print(error.localizedDescription)
                     }
@@ -159,7 +147,7 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                     let userInfo = ["email": user!.email!, "username": username as Any , "uid": user!.uid, "photoURL": photoString!, "bio": bio] as [String : Any]
                     
                     let userRef = DataService.ds.REF_USERS.child((user?.uid)!)
-                    userRef.setValue(userInfo)
+                    userRef.updateChildValues(userInfo)
                     print("BRIAN: New values saved properly!")
                       
                         }
@@ -176,7 +164,39 @@ class EditProfileVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     
     @IBAction func backPress(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func changePassword(_ sender: Any) {
+        
+        let alert = SCLAlertView()
+        let txt = alert.addTextField("Enter email")
+        alert.addButton("OK") {
+        let emailInput = txt.text
+        
+        FIRAuth.auth()?.sendPasswordReset(withEmail: emailInput!, completion: { (error) in
+            if let error = error {
+                if let errCode = FIRAuthErrorCode(rawValue: error._code) {
+                    switch errCode {
+                    case .errorCodeUserNotFound:
+                        DispatchQueue.main.async {
+                            showWarningMessage("The e-mail address you have entered is not valid")
+                        }
+                    default:
+                        DispatchQueue.main.async {
+                            showWarningMessage("An error has occurred")
+                        }
+                    }
+                }
+                return
+            } else {
+                DispatchQueue.main.async {
+                    showNotice("You'll receive an e-mail shortly to reset your password")
+                    }
+                }
+            })
+        }
+        alert.showEdit("Change Password", subTitle: "Please enter the e-mail address associated with your account")
     }
 
-    }
-
+}
